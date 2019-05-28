@@ -1,0 +1,33 @@
+{
+  "name": "travel-site",
+  "version": "1.0.0",
+  "description": "#Description Website built to practice with CSS/JS file architecture, BEM naming conventions, Git, NPM, PostCSS, Webpack, Gulp and the deployment process.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorishr/travel-site.git"
+  },
+  "author": "Joris Raymaekers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorishr/travel-site/issues"
+  },
+  "homepage": "https://github.com/jorishr/travel-site#readme",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "browser-sync": "^2.26.5",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-mixins": "^6.2.1",
+    "postcss-nested": "^4.1.2",
+    "postcss-simple-vars": "^5.0.2"
+  }
+}
