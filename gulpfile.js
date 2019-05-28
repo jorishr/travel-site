@@ -4,19 +4,22 @@
 - BrowserSync is configured for Vagrant localhost
  */
 var gulp = require('gulp'),
-    postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer'),
-    cssVars = require('postcss-simple-vars'),
-    nested = require('postcss-nested'),
-    cssImport = require('postcss-import'),
-    mixins = require('postcss-mixins'),
     browserSync = require('browser-sync').create(),
-    reload = browserSync.reload;
+    reload = browserSync.reload,
+    sass = require('gulp-sass'),
+    sourcemaps = require('gulp-sourcemaps'),
+    postcss = require('gulp-postcss');
+    
+    
+sass.compiler = require('node-sass');
 
-
-function stylesTask(){
-    return gulp.src('./app/src/styles/main.css')
-        .pipe(postcss([cssImport, mixins, cssVars, nested, autoprefixer]))
+function styles(){
+    return gulp.src('./app/src/styles/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(postcss([autoprefixer]))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./app/'));
 }
 
@@ -30,9 +33,9 @@ function watchFiles(){
         port: 80    
     })
     // gulp.watch('<files>', htmlTask);
-    gulp.watch('./app/src/styles/**/*.css', stylesTask);
+    gulp.watch('./app/src/styles/**/*.scss', styles);
     gulp.watch(['./app/index.html', './app/styles.css']).on('change', reload);
 };
 
-exports.styles = stylesTask;
+exports.styles = styles;
 exports.watch = watchFiles;
