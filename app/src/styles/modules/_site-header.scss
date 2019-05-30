@@ -1,0 +1,57 @@
+.site-header{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    padding: .6rem 0;
+
+    @include atMedium {     // no navBar on small screens
+        background-color: rgba($mainBlue,.3);
+    }
+
+    &__btn {
+        float:right;
+    }
+
+    &__logo {
+        background-color: $mainBlue;
+        position: absolute;
+        top: 0;                 // cancels out the site-header padding-top
+        padding: 1rem 1.75rem;
+        left: 50%;
+        transform: translateX(-50%) scale(.8);
+        transform-origin: 50% 0;
+
+        @include atMedium{
+            left: auto;
+            transform: translateX(0);
+            padding: 1.5rem 3rem;
+        }
+    }
+
+    &__logo__seoText {
+        font-size: 0;       // or text-indent: -9999px
+    }
+
+    &__menuContent{
+        display: none;
+
+        @include atMedium{
+            display: block;
+        }
+    }
+
+    &__menuBtn {
+        width: 1.25rem;
+        height: 1.25rem;
+        background-color: #FFF;
+        
+        position: absolute;
+        top: .6rem;
+        right: .6rem;
+
+        @include atMedium {
+            display: none;
+        }
+    }
+}
