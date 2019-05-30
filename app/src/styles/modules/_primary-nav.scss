@@ -1,0 +1,27 @@
+.primaryNav {
+
+    ul {
+        padding: 0;
+        margin: 0;
+        @include clearFloat     // clears the li floats
+    }
+
+    li {
+        list-style: none;
+        float: left;
+        padding-right: 1.125rem;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 300;
+        display: block;
+        padding: .75rem 0;
+    }
+
+    &--floatRight {
+        float: right;
+    }
+}
+

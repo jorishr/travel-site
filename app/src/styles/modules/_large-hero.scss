@@ -5,6 +5,7 @@
     &__text-content {
         position: absolute;
         top: 50%;
+        padding-top: 60px;  // account for the header-bar to position in middle
         text-align: center;
         width: 100%;
         left: 0;
