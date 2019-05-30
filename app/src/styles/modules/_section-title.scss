@@ -18,6 +18,12 @@
         @include atSmall{
             margin: 0 .6rem 0 0; // next to title 
             display: inline-block;
+            position: relative;
+            top: 8px;
         }
+    }
+
+    &--blue {
+        color: $mainBlue;
     }
 }
