@@ -1,6 +1,6 @@
 .wrapper {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
     max-width: 1236px;  // border-box active adjust for padding
     margin-left: auto;
     margin-right: auto;
@@ -8,6 +8,16 @@
 
     &--medium {
         max-width: 976px;
+    }
+
+    &--mobile {             // none for mobile and tablet
+        padding-left: 0;
+        padding-right: 0;
+
+        @include atLarge{
+            padding-left: 1.125rem;
+            padding-right: 1.125rem;
+        }
     }
 
     &--bottomMargin{

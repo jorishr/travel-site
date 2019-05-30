@@ -1,0 +1,49 @@
+.cards {
+    background-color: rgba(255,255,255, .7);
+    padding: 0 1.125rem 1px 1.124rem;
+    margin-bottom: 8rem;     
+        
+        /*  
+        reduced padding and added margin-bottom for mobile and tablet
+        the 1px bottom gives the p something to push up against 
+        extra margin-b has to be removed on last card (mobile)
+        */
+
+    &--last-card {
+        margin-bottom: 0;
+    }
+
+    @include atLarge {
+        padding: 0 1.8rem 1px 1.8rem;   
+        margin-bottom: 0;
+    }
+
+    &__image{
+        position: relative;
+        top: -80px;         // half of the img height
+        border: solid 5px rgba(255,255,255, .7);
+        
+        border-radius: 50%;
+        width: 160px;
+        height: 160px;
+        overflow: hidden;
+
+        margin: 0 auto -80px auto;
+    }
+
+    &__title{
+        color: $mainBlue;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    &__subtitle{
+        color: $mainOrange;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
+        margin: .25rem 0 1rem 0;
+    }
+}

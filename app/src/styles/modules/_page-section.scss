@@ -9,4 +9,24 @@
         background-color: $mainBlue;
         color: #fff;
     }
+
+    &--backgroundImage{
+        background-color: $lightBlue;   
+            
+            // mobile and tablet don't get heavy image
+
+        @include atLarge{
+            background: url('src/images/testimonials-bg.jpg') top center no-repeat;
+            background-size: cover;
+        }
+
+    }
+
+    &--bPadding {
+        padding-bottom: 0;  // none for mobile and tablet screens 
+
+        @include atLarge {
+            padding-bottom: 1.125rem;
+        }
+    }
 }
