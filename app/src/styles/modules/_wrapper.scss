@@ -1,12 +1,22 @@
 .wrapper {
     padding-left: 18px;
     padding-right: 18px;
-    max-width: 1200px;
+    max-width: 1236px;  // border-box active adjust for padding
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;   // see _row 
 
     &--medium {
         max-width: 976px;
+    }
+
+    &--bottomMargin{
+        margin-bottom: 1rem;
+
+        @include atSmall{
+            margin-bottom: 3.875rem;
+        }
+        
     }
 
     .wrapper {  

@@ -1,0 +1,36 @@
+.row{
+
+margin-right: -65px;    // last column padding overflow problem, see _wrapper
+    
+    &--columnPadding > div {    
+        padding-right: 65px;
+    }
+    /* without > div it would be applied to container div, not the div 
+       elements that make up the column */ 
+
+    @include clear;
+
+    @include atMedium{
+        
+        /*  The medium-X are the base-style applied from medium screens onwards
+            X is based on 12 column layout, 1/3 = 4
+            The modifiers for specific cases */
+        &__medium-4 {
+            float: left;
+            width: 33.33%;
+        }
+
+        &__medium-4--larger{
+            width: 37%;
+        }
+
+        &__medium-8 {
+            float: left;
+            width: 66.66%;
+        }
+
+        &__medium-8--smaller {
+            width: 63%;
+        }
+    }
+}

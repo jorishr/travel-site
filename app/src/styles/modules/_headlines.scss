@@ -43,4 +43,11 @@
     strong {
         font-weight: 600;
     }
+
+    &--noTopMargin{     // when stacked on small screens default margin applies
+        @include atMedium{
+            margin-top: 0;
+        }
+        
+    }
 }
