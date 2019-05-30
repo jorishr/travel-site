@@ -11,12 +11,12 @@
 }
   
 @mixin atLarge {
-    @media (min-width: 1200px) {
+    @media (min-width: 1010px) {
       @content;
     }
 }
 
-@mixin clear {
+@mixin clearFloat {
   &::after{
     content: "";
     clear: both;

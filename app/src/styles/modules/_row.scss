@@ -13,16 +13,76 @@
     &--columnPadding-large {
         margin-right: -100px;
     }
+    
     &--columnPadding-large > div {    
         padding-right: 100px;
     }
 
-    @include clear;
+    &--columnPadding-small {
+        margin-right: -45px;
+    }
+
+    &--columnPadding-small > div {    
+        padding-right: 45px;
+    }
+
+    &--topPadding{          // see cards__image
+        padding-top: 80px;
+    }
+
+/*  code for equal card height, only starting atLarge size screens
+    cards div use float (see _row) 
+    switch to flex box
+*/
+    &--columnHeight{
+        @include atLarge{
+            display:flex;
+        }
+        & > div {
+            float: none;
+            display: flex;
+        }
+    }   
+
+    @include clearFloat; 
+
+/*  
+    The large-X are the base-style applied for large screens
+    The medium-X (below) are the styles for medium and up
+    Some page-section require medium, others large. 
+    X is based on 12 column layout, 1/3 = 4
+    The modifiers for specific cases 
+*/
+    @include atLarge {
+
+        &__large-4 {
+            float: left;
+            width: 33.33%;
+        }
+
+        &__large-4--larger{
+            width: 37%;
+        }
+
+        &__large-8 {
+            float: left;
+            width: 66.66%;
+        }
+
+        &__large-8--smaller {
+            width: 63%;
+        }
+
+        &__large-6 {
+            float: left;
+            width: 50%;
+        }
+    }
 
     @include atMedium {
-        /*  The medium-X are the base-style applied from medium screens onwards
-            X is based on 12 column layout, 1/3 = 4
-            The modifiers for specific cases */
+        //  The column-X are the base-styles applied for medium screens and up
+        //  X is based on 12 column layout, 1/3 = 4
+        //  The modifiers for specific cases
         &__medium-4 {
             float: left;
             width: 33.33%;
