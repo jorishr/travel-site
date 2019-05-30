@@ -1,0 +1,23 @@
+.section-title{
+    font-size: 2.55rem;
+    font-weight: 300;
+    text-align: center;
+
+    @include atSmall{
+        font-size: 3.75rem;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    &__icon {
+        display: block;     // on it's own line on mobile
+        margin: 0 auto .6rem auto;
+
+        @include atSmall{
+            margin: 0 .6rem 0 0; // next to title 
+            display: inline-block;
+        }
+    }
+}

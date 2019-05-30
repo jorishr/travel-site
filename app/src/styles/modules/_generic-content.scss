@@ -1,7 +1,7 @@
 .generic-content {
     p {
         line-height: 1.65;
-        margin: 1.8rem 0;
+        margin: 0 0 1.8rem 0;   // features-item  p requires 0 top margin
         font-weight: 300;
 
         @include atSmall {
