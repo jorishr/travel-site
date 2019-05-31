@@ -81,32 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/src/scripts/test.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/src/scripts/app.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./app/src/scripts/modules/_module1.js":
-/*!*********************************************!*\
-  !*** ./app/src/scripts/modules/_module1.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction sayHello(name) {\n  console.log(name);\n}\n\n;\n/* harmony default export */ __webpack_exports__[\"default\"] = (sayHello);\n\n//# sourceURL=webpack:///./app/src/scripts/modules/_module1.js?");
-
-/***/ }),
-
-/***/ "./app/src/scripts/test.js":
-/*!*********************************!*\
-  !*** ./app/src/scripts/test.js ***!
-  \*********************************/
+/***/ "./app/src/scripts/app.js":
+/*!********************************!*\
+  !*** ./app/src/scripts/app.js ***!
+  \********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_module1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/_module1 */ \"./app/src/scripts/modules/_module1.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\n // const sayHello = require('./modules/_module1');\n\nObject(_modules_module1__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"Joris\");\n\nvar Person = function Person(fullName, favoriteColor) {\n  _classCallCheck(this, Person);\n\n  this.name = fullName;\n  this.favoriteColor = favoriteColor;\n};\n\nconsole.log(Person);\n\nvar sayMe = function sayMe(x) {\n  console.log(x);\n};\n\nsayMe(\"Joris\");\n\n//# sourceURL=webpack:///./app/src/scripts/test.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_mobileMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/mobileMenu */ \"./app/src/scripts/modules/mobileMenu.js\");\n\nvar mobileMenu = new _modules_mobileMenu__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\n\n//# sourceURL=webpack:///./app/src/scripts/app.js?");
+
+/***/ }),
+
+/***/ "./app/src/scripts/modules/mobileMenu.js":
+/*!***********************************************!*\
+  !*** ./app/src/scripts/modules/mobileMenu.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n\n\nvar MobileMenu =\n/*#__PURE__*/\nfunction () {\n  function MobileMenu() {\n    _classCallCheck(this, MobileMenu);\n\n    this.siteHeader = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.site-header');\n    this.menuIcon = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.site-header__menuIcon');\n    this.menuContent = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.site-header__menuContent');\n    this.events();\n  }\n\n  _createClass(MobileMenu, [{\n    key: \"events\",\n    value: function events() {\n      this.menuIcon.click(this.toggle.bind(this));\n    }\n  }, {\n    key: \"toggle\",\n    value: function toggle() {\n      this.menuContent.toggleClass('site-header__menuContent--visible');\n      this.siteHeader.toggleClass('site-header--expand');\n      this.menuIcon.toggleClass('site-header__menuIcon--close');\n    }\n  }]);\n\n  return MobileMenu;\n}();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (MobileMenu);\n\n//# sourceURL=webpack:///./app/src/scripts/modules/mobileMenu.js?");
 
 /***/ }),
 

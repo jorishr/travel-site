@@ -4,13 +4,21 @@
     z-index: 1;
     width: 100%;
     padding: .6rem 0;
+    transition: background-color .3s ease-out;
 
     @include atMedium {     // no navBar on small screens
         background-color: rgba($mainBlue,.3);
     }
 
+    &--expand {
+        background-color: rgba($mainBlue, 0.55);
+    }
+
     &__btn {
-        float:right;
+
+        @include atMedium{
+            float:right;
+        }
     }
 
     &__logo {
@@ -34,24 +42,86 @@
     }
 
     &__menuContent{
-        display: none;
+        opacity: 0;
+        position: relative;
+        z-index: -10;
+        transition: all .3s ease-out;
+        padding-top: 5.625rem;
+        text-align: center;
+        transform: scale(1.2);
 
         @include atMedium{
-            display: block;
+            opacity: 1;
+            z-index: 1;
+            padding-top: 0;     // cancel out the base padding-top
+            transform: scale(1);
+        }
+
+        &--visible{
+            opacity: 1;
+            z-index: 1;
+            transform: scale(1);
         }
     }
 
-    &__menuBtn {
+    &__menuIcon {
         width: 1.25rem;
-        height: 1.25rem;
-        background-color: #FFF;
+        height: 1.1875rem;
         
         position: absolute;
         top: .6rem;
         right: .6rem;
+        z-index: 10;
 
         @include atMedium {
             display: none;
+        }
+
+        &::before{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #FFF;
+            width: 1.25rem;
+            height: .1875rem;
+            transform-origin: 0 0;
+            transition: transform .3s ease-out;
+        }
+        &__middleBar{
+            position: absolute;
+            top: .5rem;
+            left: 0;
+            background-color: #FFF;
+            width: 1.25rem;
+            height: .1875rem;
+            transition: all .3s ease-out;
+            transform-origin: 0 50%;
+        }
+
+        &::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left:0 ;
+            background-color: #FFF;
+            width: 1.25rem;
+            height: .1875rem;
+            transform-origin: 0 100%;
+            transition: transform .3s ease-out;
+
+        }
+        &--close {
+            &::before {
+                transform: rotate(45deg) scaleX(1.25);
+            }
+            .site-header__menuIcon__middleBar {
+                opacity: 0;
+                transform: scale(0);
+            }
+            &::after {
+                transform: rotate(-45deg) scaleX(1.25) translateY(1px); 
+            }
         }
     }
 }
