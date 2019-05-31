@@ -9,8 +9,8 @@ var gulp = require('gulp'),
     reload = browserSync.reload,
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    postcss = require('gulp-postcss');
-    
+    postcss = require('gulp-postcss'),
+    webpack = require('webpack');
     
 sass.compiler = require('node-sass');
 
@@ -23,8 +23,16 @@ function styles(){
         .pipe(gulp.dest('./app/'));
 }
 
+function jsCompile(cb){
+    webpack(require('./webpack.config.js'), function(err, stats){
+        if (err){console.log(err.toString());}
+        console.log(stats.toString());
+        cb();       // make gulp aware task is done
+    });
+}
+
 // NOTE: the order in the array of CSS tasks matters!
-// NOTE: browserSync is setup with Vagrant localhost settings
+// NOTE: browserSync setting with Vagrant: proxy: 'travel.local', port:80
 
 function watchFiles(){
     browserSync.init({
@@ -32,10 +40,14 @@ function watchFiles(){
         proxy: 'travel.local',
         port: 80    
     })
-    // gulp.watch('<files>', htmlTask);
+
+    const mainFiles = ['./app/index.html', './app/main.css', './app/bundle.js']
     gulp.watch('./app/src/styles/**/*.scss', styles);
-    gulp.watch(['./app/index.html', './app/styles.css']).on('change', reload);
+    gulp.watch('./app/src/scripts/**/*.js', jsCompile);
+    gulp.watch(mainFiles).on('change', reload);
 };
 
 exports.styles = styles;
+exports.jsCompile = jsCompile;
 exports.watch = watchFiles;
+

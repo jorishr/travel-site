@@ -4,7 +4,9 @@
   "description": "#Description Website built to practice with CSS/JS file architecture, BEM naming conventions, Git, NPM, PostCSS, Webpack, Gulp and the deployment process.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "gulp": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -17,16 +19,23 @@
   },
   "homepage": "https://github.com/jorishr/travel-site#readme",
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.5",
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "node-sass": "^4.12.0",
-    "normalize.scss": "^0.1.0"
-  }
+    "normalize.scss": "^0.1.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "keywords": []
 }
