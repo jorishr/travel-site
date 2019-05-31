@@ -81,32 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./app/src/scripts/test.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./app/src/scripts/app.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./app/src/scripts/modules/_module1.js":
-/*!*********************************************!*\
-  !*** ./app/src/scripts/modules/_module1.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction sayHello(name) {\n  console.log(name);\n}\n\n;\n/* harmony default export */ __webpack_exports__[\"default\"] = (sayHello);\n\n//# sourceURL=webpack:///./app/src/scripts/modules/_module1.js?");
-
-/***/ }),
-
-/***/ "./app/src/scripts/test.js":
-/*!*********************************!*\
-  !*** ./app/src/scripts/test.js ***!
-  \*********************************/
+/***/ "./app/src/scripts/app.js":
+/*!********************************!*\
+  !*** ./app/src/scripts/app.js ***!
+  \********************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_module1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/_module1 */ \"./app/src/scripts/modules/_module1.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\n // const sayHello = require('./modules/_module1');\n\nObject(_modules_module1__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"Joris\");\n\nvar Person = function Person(fullName, favoriteColor) {\n  _classCallCheck(this, Person);\n\n  this.name = fullName;\n  this.favoriteColor = favoriteColor;\n};\n\nconsole.log(Person);\n\nvar sayMe = function sayMe(x) {\n  console.log(x);\n};\n\nsayMe(\"Joris\");\n\n//# sourceURL=webpack:///./app/src/scripts/test.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_mobileMenu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/mobileMenu */ \"./app/src/scripts/modules/mobileMenu.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nvar $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\n // const sayHello = require('./modules/_module1');\n\nObject(_modules_mobileMenu__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(\"Joris\");\n\nvar Person = function Person(fullName, favoriteColor) {\n  _classCallCheck(this, Person);\n\n  this.name = fullName;\n  this.favoriteColor = favoriteColor;\n};\n\nconsole.log(Person);\n\nvar sayMe = function sayMe(x) {\n  console.log(x);\n};\n\nsayMe(\"Joris\");\n\n//# sourceURL=webpack:///./app/src/scripts/app.js?");
+
+/***/ }),
+
+/***/ "./app/src/scripts/modules/mobileMenu.js":
+/*!***********************************************!*\
+  !*** ./app/src/scripts/modules/mobileMenu.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction sayHello(name) {\n  console.log(name);\n}\n\n;\n/* harmony default export */ __webpack_exports__[\"default\"] = (sayHello);\n\n//# sourceURL=webpack:///./app/src/scripts/modules/mobileMenu.js?");
 
 /***/ }),
 
