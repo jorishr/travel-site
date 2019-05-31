@@ -1,5 +1,11 @@
 .primaryNav {
 
+    padding-top: 0.6rem;
+
+    @include atMedium{
+        padding-top: 0;
+    }
+    
     ul {
         padding: 0;
         margin: 0;
@@ -7,9 +13,23 @@
     }
 
     li {
+        display: inline-block;
         list-style: none;
-        float: left;
-        padding-right: 1.125rem;
+        padding-right: .31rem;
+
+        @include atMedium{
+            padding-right: 1.125rem;
+            float: left;
+            display: block;
+        }
+    }
+
+    li:last-child{
+        padding-right: 0;
+
+        @include atMedium{
+            padding-right: 1.125rem;
+        }
     }
 
     a {
@@ -17,11 +37,21 @@
         text-decoration: none;
         font-weight: 300;
         display: block;
-        padding: .75rem 0;
+        padding: .31rem 0.4rem;
+        font-size: 0.8rem;
+        background-color: rgba($mainBlue, 0.5);
+
+        @include atMedium{
+            padding: .75rem 0;
+            font-size: 1rem;
+            background-color: transparent;
+        }
     }
 
     &--floatRight {
-        float: right;
+        @include atMedium{
+            float: right;
+        }
     }
 }
 
