@@ -14,6 +14,13 @@
     &__icon {
         display: block;     // on it's own line on mobile
         margin: 0 auto .6rem auto;
+        width: 64px;
+        height: 64px;
+        fill: $mainOrange;
+
+        &--blue{
+            fill: $mainBlue;
+        }
 
         @include atSmall{
             margin: 0 .6rem 0 0; // next to title 
