@@ -7,7 +7,12 @@
     transition: background-color .3s ease-out;
 
     @include atMedium {     // no navBar on small screens
+        position: fixed;    // sticky header from medium onwards
         background-color: rgba($mainBlue,.3);
+    
+        &--dark {
+            background-color: $darkBlue;
+        }
     }
 
     &--expand {
@@ -29,11 +34,16 @@
         left: 50%;
         transform: translateX(-50%) scale(.8);
         transform-origin: 50% 0;
+        transition: transform .3s ease-out;
 
         @include atMedium{
             left: auto;
             transform: translateX(0);
             padding: 1.5rem 3rem;
+
+            .site-header--dark & {
+                transform: scale(.55);
+            }
         }
     }
 
