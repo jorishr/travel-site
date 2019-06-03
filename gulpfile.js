@@ -25,7 +25,7 @@ function styles(){
 
 function jsCompile(cb){
     webpack(require('./webpack.config.js'), function(err, stats){
-        if (err){console.log(err.toString());}
+        if (err){console.log(err.toString());};
         console.log(stats.toString());
         cb();       // make gulp aware task is done
     });
