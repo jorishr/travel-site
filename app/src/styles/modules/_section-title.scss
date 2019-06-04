@@ -33,4 +33,13 @@
     &--blue {
         color: $mainBlue;
     }
+
+    &--lessMargin {
+        margin-bottom: .8rem;
+
+        @include atMedium {
+            margin-bottom: 1.3rem;
+            margin-top: 0;
+        }
+    }
 }
