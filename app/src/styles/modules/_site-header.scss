@@ -35,6 +35,7 @@
         transform: translateX(-50%) scale(.8);
         transform-origin: 50% 0;
         transition: transform .3s ease-out;
+        fill: #FFF;
 
         @include atMedium{
             left: auto;
@@ -45,6 +46,10 @@
                 transform: scale(.55);
             }
         }
+    }
+    &__logo__icon {
+        max-width: 141px;
+        max-height: 59px;
     }
 
     &__logo__seoText {
