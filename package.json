@@ -35,6 +35,7 @@
     "del": "^4.1.1",
     "gulp": "^4.0.2",
     "gulp-imagemin": "^6.0.0",
+    "gulp-modernizr": "^3.2.1",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",

@@ -14,7 +14,8 @@ var gulp = require('gulp'),
     webpack = require('webpack'),    
     gulpSprite = require('gulp-svg-sprite'),
     del = require('del'),
-    imageMin = require('gulp-imagemin');
+    imageMin = require('gulp-imagemin'),
+    modernizr = require('gulp-modernizr');
     
 sass.compiler = require('node-sass');
 
@@ -78,6 +79,14 @@ function optimizeImages(){
         .pipe(gulp.dest('./dist/assets/images/'));
 };
 
+function applyModernizr(){
+    return gulp.src(['./app/src/styles/**/*.scss', './app/src/scripts/**/*.js'])
+        .pipe(modernizr({
+            'options': ['setClasses']
+        }))
+        .pipe(gulp.dest('./app/'));
+};
+
 // NOTE: browserSync setting with Vagrant: proxy: 'travel.local', port:80
 
 function watchFiles(){
@@ -89,7 +98,7 @@ function watchFiles(){
 
     const mainFiles = ['./app/index.html', './app/main.css', './app/bundle.js']
     gulp.watch('./app/src/styles/**/*.scss', styles);
-    gulp.watch('./app/src/scripts/**/*.js', jsCompile);
+    gulp.watch('./app/src/scripts/**/*.js', gulp.series(applyModernizr, jsCompile));
     gulp.watch('./app/src/images/icons/**/*.svg', gulp.series(beginClean, createSprite));
     gulp.watch(mainFiles).on('change', reload);
 };
@@ -101,4 +110,5 @@ exports.createSprite = createSprite;
 exports.beginClean = beginClean;
 exports.optimizeImages = optimizeImages;
 exports.deleteDistFolder = deleteDistFolder;
+exports.applyModernizr = applyModernizr;
 exports.build = series(deleteDistFolder, optimizeImages);

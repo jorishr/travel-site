@@ -34,7 +34,7 @@
     cards div use float (see _row) 
     switch to flex box
 */
-    &--columnHeight{
+    .flexbox &--columnHeight{
         @include atLarge{
             display:flex;
         }
