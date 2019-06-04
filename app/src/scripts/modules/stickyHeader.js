@@ -4,13 +4,27 @@ import smoothScroll from 'jquery-smooth-scroll';
 
 class StickyHeader {
     constructor(){
+        this.lazyLoadImages = $('.lazyload');
         this.siteHeader = $('.site-header');
         this.triggerElement = $('.large-hero__title');
         this.createHeaderWaypoint();
         this.headerLinks = $('.primaryNav a'); 
-        this.pageSections = $('.page-section, .large-hero');
+        this.pageSections = $('.page-section');
         this.createPageSectionWaypoint();
         this.addSmoothScroll();
+        this.refreshWaypoints();
+    }
+
+        /*  
+            fix for lazyload package disrupting waypoints triggering
+            refreshes all waypoints in browsers memory, including those
+            from other modules 
+        */ 
+
+    refreshWaypoints(){    
+        this.lazyLoadImages.on('load', () => {
+            Waypoint.refreshAll();  
+        })
     }
 
     addSmoothScroll(){
@@ -21,7 +35,7 @@ class StickyHeader {
         let mainObject = this;
         new Waypoint({
             element: this.triggerElement[0],
-            handler: (direction) => {
+            handler: function(direction){
                 if (direction === 'down'){
                     mainObject.siteHeader.addClass('site-header--dark');
                 } else {
@@ -37,19 +51,19 @@ class StickyHeader {
             let currentPageSection = this;
             new Waypoint({
                 element: currentPageSection,
-                handler: (direction) => {
-                    if(direction === 'down'){
+                handler: function(direction){
+                    if(direction == 'down'){
                         let matchingLink = currentPageSection.getAttribute('data-matchingLink');
                         mainObject.headerLinks.removeClass('current-link');
                         $(matchingLink).addClass('current-link'); 
                     }
                 },
-                offset: '20%'
+                offset: '18%'
             });
             new Waypoint({
                 element: currentPageSection,
-                handler: (direction) => {
-                    if(direction === 'up'){
+                handler: function(direction) {
+                    if(direction == 'up'){
                         let matchingLink = currentPageSection.getAttribute('data-matchingLink');
                         mainObject.headerLinks.removeClass('current-link');
                         $(matchingLink).addClass('current-link'); 

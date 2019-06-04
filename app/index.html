@@ -8,6 +8,7 @@
   <meta name="keywords" content="Travel planning, travel bundles, travel escapes, affordable travel">
   <meta name="description" content="Your clarify. One trip away. We create soul restoring journeys that inspire you to be you.">
   <link rel="stylesheet" href="/app/main.css">
+  <script src="/app/vendor-bundle.js"></script>
 </head>
 
 <body>
@@ -81,8 +82,9 @@
         Ever since, we&rsquo;ve been working to make travel <strong>better for everyone.</strong></h3>
 
       <div class="wrapper wrapper--medium wrapper--bottomMargin">
-          <img  sizes="(min-width:970px) 976w, 100vw"
-                srcset="src/images/first-trip-low-res.jpg 565w, 
+          <img  class="lazyload"
+                sizes="(min-width:970px) 976w, 100vw"
+                data-srcset="src/images/first-trip-low-res.jpg 565w, 
                         src/images/first-trip-i.jpg 976w, 
                         src/images/first-trip-hi-dpi.jpg 1952w" 
                 alt="Couple walking down a street.">
@@ -92,15 +94,16 @@
         <div class="row__medium-4 row__medium-4--smaller">
           <picture>
             <source sizes="404w" 
-                    srcset="src/images/our-start-i.jpg 404w, 
+                    data-srcset="src/images/our-start-i.jpg 404w, 
                             src/images/our-start-hi-dpi.jpg 808w"
                     media="(min-width:1020px)">
             <source sizes="382w"
-                    srcset="src/images/our-start-portrait.jpg 382w, 
+                    data-srcset="src/images/our-start-portrait.jpg 382w, 
                             src/images/our-start-portrait-hi-dpi.jpg 764w"
                     media="(min-width:800px)">
-            <img  sizes="800w"
-                  srcset="src/images/our-start-landscape.jpg 800w, 
+            <img  class="lazyload"
+                  sizes="800w"
+                  data-srcset="src/images/our-start-landscape.jpg 800w, 
                       src/images/our-start-landscape-hi-dpi.jpg 1600w"
                   alt="Our founder, Jane Doe">
           </picture>    
@@ -170,7 +173,7 @@
   </div>
   
   <div  id="testimonials" class="page-section page-section--backgroundImage 
-            page-section--bPadding"
+            page-section--bPadding lazyload"
         data-matchingLink="#testimonials-link">
     <div class="wrapper wrapper--mobile">
       <h2 class="section-title section-title--blue">
@@ -185,8 +188,9 @@
         <div class="row__large-4">
           <div class="cards">
             <div class="cards__image">
-              <img  sizes="(max-width:530px), 160px"
-                    srcset="src/images/testimonial-jane.jpg 160w,
+              <img  class="lazyload"
+                    sizes="(max-width:530px), 160px"
+                    data-srcset="src/images/testimonial-jane.jpg 160w,
                             src/images/testimonial-jane-hi-dpi.jpg 320w"
                     alt="Jane Doe">
             </div>
@@ -199,8 +203,9 @@
         <div class="row__large-4">
           <div class="cards">
             <div class="cards__image">
-              <img  sizes="(max-width:530px), 160px" 
-                    srcset="src/images/testimonial-john.jpg 160w, 
+              <img  class="lazyload"
+                    sizes="(max-width:530px), 160px" 
+                    data-srcset="src/images/testimonial-john.jpg 160w, 
                          src/images/testimonial-john-hi-dpi.jpg 320w"
                     alt="John Smith">
             </div>
@@ -213,8 +218,9 @@
         <div class="row__large-4">
           <div class="cards cards--last-card">
             <div class="cards__image">
-              <img  sizes="(max-width:530px), 160px"
-                    srcset="src/images/testimonial-cat.jpg 160w, 
+              <img  class="lazyload"
+                    sizes="(max-width:530px), 160px"
+                    data-srcset="src/images/testimonial-cat.jpg 160w, 
                          src/images/testimonial-cat-hi-dpi.jpg 320w"
                     alt="Cat McKitty">
             </div>
@@ -279,5 +285,5 @@
   </div>
 
 </body>
-<script src="/app/bundle.js"></script>
+<script src="/app/app-bundle.js"></script>
 </html>

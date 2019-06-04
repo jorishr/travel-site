@@ -36,6 +36,11 @@ function jsCompile(cb){
 }
 
 let spriteConfig = {
+    shape: {
+        spacing: {
+            padding: 1
+        }
+    },
     svg: {
         xmlDeclaration: false,
         doctypeDeclaration: false,
@@ -43,7 +48,7 @@ let spriteConfig = {
         namespaceClassnames: false
     },
     mode: {
-        symbol: true
+        symbol: true,
     }
 }
 
@@ -53,8 +58,14 @@ function beginClean(){
 
 function createSprite(){
     return gulp.src('./app/src/images/icons/**/*.svg')
-    .pipe(gulpSprite(spriteConfig))
-    .pipe(gulp.dest('./app/src/images/sprite/'));
+        .pipe(gulpSprite(spriteConfig))
+        .pipe(gulp.dest('./app/src/images/sprite/'));
+}
+
+function createPngFallback(){
+    return gulp.src('./app/src/images/sprite/css/*.svg')
+        .pipe(svgToPng())
+        .pipe(gulp.dest('./app/src/images/sprite/png/'));
 }
 
 // NOTE: browserSync setting with Vagrant: proxy: 'travel.local', port:80
@@ -78,4 +89,3 @@ exports.jsCompile = jsCompile;
 exports.watch = watchFiles;
 exports.createSprite = createSprite;
 exports.beginClean = beginClean;
-
