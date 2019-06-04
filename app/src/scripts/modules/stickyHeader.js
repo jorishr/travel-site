@@ -40,6 +40,7 @@ class StickyHeader {
                     mainObject.siteHeader.addClass('site-header--dark');
                 } else {
                     mainObject.siteHeader.removeClass('site-header--dark');
+                    mainObject.headerLinks.removeClass('current-link');
                 }
             }
         });
