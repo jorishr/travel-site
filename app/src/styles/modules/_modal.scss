@@ -5,10 +5,20 @@
     bottom: 0;
     left: 0;
     z-index: 5;
+
     opacity: 0;
     visibility: hidden;
 
     background-color: rgba(255, 255, 255, .94);
+
+    transform: scale(1.2);
+    transition: all .3s ease-out;
+
+    &--visible {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
 
     &__innerCenter {
         position: absolute;
@@ -25,13 +35,13 @@
         text-align: center;
     }
 
-    &__close {
+    &__closeBtn {
         font-size: 2rem;
         color: $mainBlue;
 
         position: absolute;
-        top: 15px;
-        right: 15px;
+        top: 25px;
+        right: 25px;
 
         transform: scaleX(1.2);
         transform-origin: 100% 0;
