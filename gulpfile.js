@@ -15,7 +15,11 @@ var gulp = require('gulp'),
     gulpSprite = require('gulp-svg-sprite'),
     del = require('del'),
     imageMin = require('gulp-imagemin'),
-    modernizr = require('gulp-modernizr');
+    modernizr = require('gulp-modernizr'),
+    rev = require('gulp-rev'),
+    cssnano = require('gulp-cssnano'),
+    uglify = require('gulp-uglify'),
+    revReplace = require('gulp-rev-replace');
     
 sass.compiler = require('node-sass');
 
@@ -86,6 +90,46 @@ function applyModernizr(){
         }))
         .pipe(gulp.dest('./app/'));
 };
+function htmlBuild(){
+    return gulp.src('./app/index.html')
+        .pipe(gulp.dest('./dist'));
+};
+
+function cssBuild(){
+    return gulp.src('./app/main.css')
+        .pipe(cssnano())
+        .pipe(rev())
+        .pipe(gulp.dest('./dist/assets/styles'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('./dist/assets/styles'))
+};
+
+function updateHtmlCss(){
+    const manifest = gulp.src("./dist/assets/styles/rev-manifest.json");
+    return gulp.src('./dist/index.html')
+        .pipe(revReplace({manifest: manifest}))
+        .pipe(gulp.dest('./dist'));
+};
+
+function jsBuild(){
+    return gulp.src(['./app/app-bundle.js', './app/vendor-bundle.js'])
+        .pipe(uglify())
+        .pipe(rev())
+        .pipe(gulp.dest('./dist/assets/scripts'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('./dist/assets/scripts'));
+};
+
+function updateHtmlJs(){
+    let manifest = gulp.src("./dist/assets/scripts/rev-manifest.json");
+    return gulp.src('./dist/index.html')
+        .pipe(revReplace({manifest: manifest}))
+        .pipe(gulp.dest('./dist'));
+};
+
+function endBuildClean(){
+    return del(['./dist/assets/styles/*.json', './dist/assets/scripts/*.json']);
+};
 
 // NOTE: browserSync setting with Vagrant: proxy: 'travel.local', port:80
 
@@ -111,4 +155,10 @@ exports.beginClean = beginClean;
 exports.optimizeImages = optimizeImages;
 exports.deleteDistFolder = deleteDistFolder;
 exports.applyModernizr = applyModernizr;
-exports.build = series(deleteDistFolder, optimizeImages);
+exports.htmlBuild = htmlBuild;
+exports.cssBuild = cssBuild;
+exports.jsBuild = jsBuild;
+exports.updateHtmlCss = updateHtmlCss;
+exports.updateHtmlJs = updateHtmlJs;
+exports.endBuildClean = endBuildClean;
+exports.build = series(deleteDistFolder, optimizeImages, htmlBuild, cssBuild, updateHtmlCss, jsBuild, updateHtmlJs, endBuildClean);
