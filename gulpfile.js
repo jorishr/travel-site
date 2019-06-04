@@ -3,6 +3,7 @@
 - JS files are processed with Webpack
 - BrowserSync is configured for Vagrant localhost
  */
+const { series } = require('gulp');
 var gulp = require('gulp'),
     autoprefixer = require('autoprefixer'),
     browserSync = require('browser-sync').create(),
@@ -12,7 +13,8 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     webpack = require('webpack'),    
     gulpSprite = require('gulp-svg-sprite'),
-    del = require('del');
+    del = require('del'),
+    imageMin = require('gulp-imagemin');
     
 sass.compiler = require('node-sass');
 
@@ -23,7 +25,7 @@ function styles(){
         .pipe(postcss([autoprefixer]))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./app/'));
-}
+};
 
 // NOTE: the order in the array of CSS tasks matters!
 
@@ -62,11 +64,19 @@ function createSprite(){
         .pipe(gulp.dest('./app/src/images/sprite/'));
 }
 
-function createPngFallback(){
-    return gulp.src('./app/src/images/sprite/css/*.svg')
-        .pipe(svgToPng())
-        .pipe(gulp.dest('./app/src/images/sprite/png/'));
+function deleteDistFolder(){
+    return del('./dist');
 }
+
+function optimizeImages(){
+    return gulp.src(['./app/src/images/**/*', '!./app/src/images/icons', '!./app/src/images/icons/**/*'])
+        .pipe(imageMin({
+            progressive: true,  // jpeg
+            interlaced: true,   // gif
+            multipass: true     // svg
+        }))
+        .pipe(gulp.dest('./dist/assets/images/'));
+};
 
 // NOTE: browserSync setting with Vagrant: proxy: 'travel.local', port:80
 
@@ -89,3 +99,6 @@ exports.jsCompile = jsCompile;
 exports.watch = watchFiles;
 exports.createSprite = createSprite;
 exports.beginClean = beginClean;
+exports.optimizeImages = optimizeImages;
+exports.deleteDistFolder = deleteDistFolder;
+exports.build = series(deleteDistFolder, optimizeImages);
