@@ -19,7 +19,8 @@ var gulp = require('gulp'),
     rev = require('gulp-rev'),
     cssnano = require('gulp-cssnano'),
     uglify = require('gulp-uglify'),
-    revReplace = require('gulp-rev-replace');
+    revReplace = require('gulp-rev-replace'),
+    replaceInFile = require('replace-in-file');
     
 sass.compiler = require('node-sass');
 
@@ -59,6 +60,7 @@ let spriteConfig = {
     }
 }
 
+// sprite tasks
 function beginClean(){
     return del('./app/src/images/sprite/');
 }
@@ -69,6 +71,7 @@ function createSprite(){
         .pipe(gulp.dest('./app/src/images/sprite/'));
 }
 
+// build tasks
 function deleteDistFolder(){
     return del('./dist');
 }
@@ -90,6 +93,7 @@ function applyModernizr(){
         }))
         .pipe(gulp.dest('./app/'));
 };
+
 function htmlBuild(){
     return gulp.src('./app/index.html')
         .pipe(gulp.dest('./dist'));
@@ -127,6 +131,22 @@ function updateHtmlJs(){
         .pipe(gulp.dest('./dist'));
 };
 
+
+async function updatePaths(){
+    let options = {
+        files: './dist/index.html',
+        from: [/href="\/app/g, /src="\/app/g, /href="src/g, /srcset="src/g, /src\//g],
+        to: ['href="assets/styles', 'src="assets/scripts', 'href="assets', 'srcset="assets', 'assets/']
+    };
+    try {
+        const results = await replaceInFile(options)
+        console.log('Replacement results:', results);
+    }
+    catch (error) {
+        console.error('Error occurred:', error);
+    };
+};
+
 function endBuildClean(){
     return del(['./dist/assets/styles/*.json', './dist/assets/scripts/*.json']);
 };
@@ -160,5 +180,6 @@ exports.cssBuild = cssBuild;
 exports.jsBuild = jsBuild;
 exports.updateHtmlCss = updateHtmlCss;
 exports.updateHtmlJs = updateHtmlJs;
+exports.updatePaths = updatePaths;
 exports.endBuildClean = endBuildClean;
-exports.build = series(deleteDistFolder, optimizeImages, htmlBuild, cssBuild, updateHtmlCss, jsBuild, updateHtmlJs, endBuildClean);
+exports.build = series(deleteDistFolder, optimizeImages, htmlBuild, cssBuild, updateHtmlCss, jsBuild, updateHtmlJs, updatePaths, endBuildClean);
