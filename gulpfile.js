@@ -151,13 +151,13 @@ function endBuildClean(){
     return del(['./dist/assets/styles/*.json', './dist/assets/scripts/*.json']);
 };
 
-// NOTE: browserSync setting with Vagrant: proxy: 'travel.local', port:80
+// NOTE: browserSync setting with Vagrant: open: 'external, 'proxy: 'travel.local', port:80
 
 function watchFiles(){
     browserSync.init({
-        open: 'external',
-        proxy: 'travel.local',
-        port: 80    
+        open: "local",			
+		proxy: "http://localhost:5500/app",	
+		port: 5555,
     })
 
     const mainFiles = ['./app/index.html', './app/main.css', './app/bundle.js']
