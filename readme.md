@@ -11,7 +11,7 @@ Fully responsive front-end website built to practice with SASS/JS file architect
     - full screen modal, 
     - reveal elements on scroll (Waypoints), 
     - lazy loading images (LazySizes), 
-    - smooth scrolling (Waypoints and JQUERY smooth scroll).
+    - smooth scrolling to page section (Waypoints and JQUERY smooth scroll).
 
 # Dev Notes
 - icon management: gulp-sprites
