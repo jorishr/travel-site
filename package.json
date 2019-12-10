@@ -6,7 +6,7 @@
   "scripts": {
     "devStart": "gulp watch",
     "build": "gulp build",
-    "webpack": "webpack",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
