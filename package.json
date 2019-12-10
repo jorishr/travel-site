@@ -4,9 +4,9 @@
   "description": "#Description Website built to practice with CSS/JS file architecture, BEM naming conventions, Git, NPM, PostCSS, Webpack, Gulp and the deployment process.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "gulp watch",
+    "build": "gulp build",
     "webpack": "webpack",
-    "gulp": "gulp watch"
   },
   "repository": {
     "type": "git",
