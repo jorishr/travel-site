@@ -135,8 +135,22 @@ function updateHtmlJs(){
 async function updatePaths(){
     let options = {
         files: './dist/index.html',
-        from: [/href="\/app/g, /src="\/app/g, /href="src/g, /srcset="src/g, /src\//g],
-        to: ['href="assets/styles', 'src="assets/scripts', 'href="assets', 'srcset="assets', 'assets/']
+        from: [
+            /<link rel="stylesheet" href="/g, 
+            /<script src="vendor-bundle/g, 
+            /<script src="app-bundle/g, 
+            /href="src/g, 
+            /srcset="src/g, 
+            /src\//g
+        ],
+        to: [
+            '<link rel="stylesheet" href="assets/styles/', 
+            '<script src="assets/scripts/vendor-bundle', 
+            '<script src="assets/scripts/app-bundle', 
+            'href="assets', 
+            'srcset="assets', 
+            'assets/'
+        ]
     };
     try {
         const results = await replaceInFile(options)
@@ -155,9 +169,10 @@ function endBuildClean(){
 
 function watchFiles(){
     browserSync.init({
-        open: "local",			
-		proxy: "http://localhost:5500/app",	
-		port: 5555,
+        server: { baseDir: './dist'}
+        //open: "local",			
+		//proxy: "localhost",	
+		//port: 3005,
     })
 
     const mainFiles = ['./app/index.html', './app/main.css', './app/bundle.js']
