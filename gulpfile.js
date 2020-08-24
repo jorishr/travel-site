@@ -169,7 +169,7 @@ function endBuildClean(){
 
 function watchFiles(){
     browserSync.init({
-        server: { baseDir: './dist'}
+        server: { baseDir: './app'}
         //open: "local",			
 		//proxy: "localhost",	
 		//port: 3005,
