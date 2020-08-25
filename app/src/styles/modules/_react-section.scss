@@ -1,0 +1,13 @@
+#react-section {
+    background-color: $mainBlue;
+    color: $lightBlue;
+    margin: 2em;
+    padding: 2em;
+    font-weight: 200;
+
+    select {
+        background-color: $mainOrange;
+        padding: .25em;
+        font-weight: initial;
+    }
+}
