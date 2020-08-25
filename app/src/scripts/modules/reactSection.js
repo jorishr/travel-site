@@ -1,14 +1,22 @@
 import React from 'react';
+import { useState} from 'react';
 
 export default function ReactSection(props){
+    const { text } = props; 
+    const [ state, setState ] = useState({value: 'nld'});
+
+    function updateLang(){
+        setState({value: event.target.value});
+    }
+
     return (
         <>
-            <p>Hello Traveller, this section is rendered by React. Please choose your preferred language.</p>
-            <select>
-                <option>Nederlands</option>
-                <option>Español</option>
-                <option>Català</option>
-                <option>English</option>
+            <p>{ text[state.value] }</p>
+            <select defaultValue="nld" onChange={ (e) => updateLang(e) }>
+                <option value="nld">Nederlands</option>
+                <option value="esp">Español</option>
+                <option value="cat">Català</option>
+                <option value="eng">English</option>
             </select>
         </>
     )

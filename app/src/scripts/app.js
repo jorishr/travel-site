@@ -7,7 +7,13 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import ReactSection from './modules/reactSection';
 
-ReactDom.render(<ReactSection />, document.querySelector('#react-section'));
+const textObj = {
+    'nld': 'Deze pagina-sectie maakt gebruik van React.',
+    'eng': 'This page-section is rendered by React',
+    'esp': 'Esta sección de página usa React',
+    'cat': 'Aquesta secció de pàgina usa React'
+}
+ReactDom.render(<ReactSection text={textObj}/>, document.querySelector('#react-section'));
 
 const mobileMenu = new MobileMenu();
 new RevealOnScroll($('.feature-item'), '85%');
